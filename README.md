@@ -1,8 +1,8 @@
-# Bloghub Again
+# Bloghub Reborn
 
 ## Description
 
-Bloghub-Again is a full-stack web application that allows users to perform basic CRUD (Create, Read, Update, Delete) operations on blog posts. The MERN stack refers to a combination of four powerful technologies that are commonly used to build scalable and dynamic web applications: MongoDB, Express, React, and Node.js.
+Bloghub-Reborn is a full-stack web application that allows users to perform basic CRUD (Create, Read, Update, Delete) operations on blog posts. The MERN stack refers to a combination of four powerful technologies that are commonly used to build scalable and dynamic web applications: MongoDB, Express, React, and Node.js.
 
 On the front-end, the website is built with React, a popular JavaScript library for building user interfaces. React allows for the creation of a fast and responsive user interface, with real-time updates and data manipulation. The website is also designed to be mobile-responsive, ensuring that it is accessible and easy to use on any device.
 
