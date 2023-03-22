@@ -13,5 +13,6 @@ On the back-end, the website uses Node.js and Express to create a server that ca
 + Express.js
 + React
 + Node.js
-  
+----
 #### [Contribution](./docs/CONTRIBUTE.md)
+----
