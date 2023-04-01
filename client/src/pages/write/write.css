@@ -1,0 +1,31 @@
+.write {
+  @apply pt-[50px];
+}
+.writeImg {
+  @apply w-[70vw] h-[250px] object-cover ml-[150px] rounded-[10px];
+}
+.writeForm {
+  @apply relative;
+}
+.writeFormGroup {
+  @apply flex items-center ml-[150px];
+}
+.writeIcon {
+  @apply w-[25px] h-[25px] text-xl border text-[rgb(129,125,125)] flex items-center justify-center cursor-pointer rounded-[50%] border-solid;
+}
+.writeInput {
+  @apply text-3xl w-[70vw] p-5 border-[none];
+}
+.writeInput::placeholder {
+  @apply text-[rgb(189,185,185)] font-normal;
+}
+.writeInput:focus {
+  outline-style: none;
+}
+.writeText {
+  @apply w-[70vw] h-screen text-xl;
+  font-family: inherit;
+}
+.writeSubmit {
+  @apply absolute text-[white] bg-[teal] text-base cursor-pointer flex items-center p-2.5 rounded-[10px] border-[none] right-[50px] top-5;
+}

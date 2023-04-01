@@ -1,0 +1,29 @@
+.register {
+  @apply h-[calc(100vh_-_50px)] flex flex-col items-center justify-center bg-cover;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    ),
+    url("https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+}
+.registerTitle {
+  @apply text-[50px];
+}
+.registerForm {
+  @apply flex flex-col mt-5;
+}
+.registerForm > label {
+  @apply mx-0 my-2.5;
+}
+.registerInput {
+  @apply bg-[white] p-2.5 rounded-[10px] border-[none];
+}
+.registerInput:focus {
+  outline: none;
+}
+.registerButton {
+  @apply cursor-pointer bg-[teal] text-[white] text-center mt-5 p-2.5 rounded-[10px] border-[none];
+}
+.registerLoginButton {
+  @apply absolute bg-[lightcoral] cursor-pointer text-[white] p-2.5 rounded-[10px] border-[none] right-5 top-[60px];
+}

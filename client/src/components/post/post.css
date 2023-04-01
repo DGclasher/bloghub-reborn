@@ -1,0 +1,28 @@
+.post {
+  @apply w-[385px] flex flex-col mt-0 mb-10 mx-[25px];
+}
+.postImg {
+  @apply w-[385px] h-[280px] object-cover rounded-[7px];
+}
+.postInfo {
+  @apply flex flex-col items-center;
+}
+.postCat {
+  @apply font-normal text-[11px] text-[#be9656] leading-[19px] cursor-pointer mr-2.5 mt-[15px];
+  font-family: "Varela Round", Arial, Helvetica, sans-serif;
+}
+.postTitle {
+  @apply text-2xl font-black cursor-pointer mt-[15px];
+  font-family: "Josefin Sans", Arial, Helvetica, sans-serif;
+}
+.postDate {
+  @apply italic text-[13px] font-normal text-[#999999] mt-[15px];
+  font-family: "Lora", serif;
+}
+.postDesc {
+  @apply font-normal text-sm leading-6 text-[#444444] overflow-hidden text-ellipsis mt-[15px];
+  font-family: "Varela Round", Arial, Helvetica, sans-serif;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}

@@ -1,0 +1,42 @@
+.settings {
+  @apply flex;
+}
+.settingsWrapper {
+  @apply flex-[9] p-5;
+}
+.settingsTitle {
+  @apply flex items-center justify-between;
+}
+.settingsTitleUpdate {
+  @apply text-3xl text-[lightcoral] mb-5;
+}
+.settingsTitleDelete {
+  @apply text-[red] text-xs cursor-pointer;
+}
+.settingsForm {
+  @apply flex flex-col;
+}
+.settingsPP {
+  @apply flex items-center my-2.5;
+}
+.settingsPP > img {
+  @apply h-[70px] w-[70px] object-cover rounded-[20px];
+}
+.settingsPPIcon {
+  @apply w-[25px] h-[25px] flex justify-center items-center text-[white] bg-[lightcoral] cursor-pointer ml-2.5 p-[5px] rounded-[50%] border-[none];
+}
+.settingsPPButton:focus {
+  outline-style: none;
+}
+.settingsForm > label {
+  @apply text-xl mt-5;
+}
+.settingsPPInput {
+  @apply w-[30%];
+}
+.settingsForm > input {
+  @apply text-[gray] h-[30px] my-2.5 border-b-[lightgray] border-[none] border-b border-solid;
+}
+.settingsSubmitButton {
+  @apply self-center w-[150px] text-[white] bg-[teal] cursor-pointer flex items-center justify-center mt-5 p-2.5 rounded-[10px] border-[none] hover:bg-[rgb(1,114,114)];
+}

@@ -1,0 +1,29 @@
+.singlePost {
+  @apply flex-[9];
+}
+.singlePostWrapper {
+  @apply pr-0 p-5;
+}
+.singlePostImg {
+  @apply w-full h-[300px] object-cover rounded-[5px];
+}
+.singlePostTitle {
+  @apply text-center text-[28px] m-2.5;
+  font-family: "Lora", sans-serif;
+}
+.singlePostEdit {
+  @apply float-right text-base;
+}
+.singlePostIcon {
+  @apply cursor-pointer ml-2.5 first:text-[teal] last:text-[tomato];
+}
+.singlePostInfo {
+  @apply flex justify-between text-base text-[#be9656] mb-5;
+  font-family: "Varela Round", Arial, Helvetica, sans-serif;
+}
+.singlePostAuthor {
+  @apply ml-[5px];
+}
+.singlePostDesc {
+  @apply text-[#666] text-lg leading-[25px] first-letter:text-3xl first-letter:font-semibold first-letter:ml-5;
+}

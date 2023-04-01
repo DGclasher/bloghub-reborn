@@ -1,0 +1,28 @@
+.sidebar {
+  @apply flex-[3] h-fit bg-[#fdfbfb] flex flex-col items-center m-5 pb-[30px] rounded-[10px];
+}
+.sidebarItem {
+  @apply flex flex-col items-center;
+}
+.sidebarTitle {
+  @apply w-4/5 text-center text-xs leading-[19px] text-[#222222] font-semibold m-2.5 p-[5px] border-y-[solid] border-y-[#a7a4a4];
+  font-family: "Varela Round", sans-serif;
+}
+.sidebarItem > img {
+  @apply w-[250px] h-[250px] mt-[15px];
+}
+.sidebarItem > p {
+  @apply p-[30px];
+}
+.sidebarList {
+  @apply list-none mb-[30px];
+}
+.sidebarListItem {
+  @apply inline-block w-6/12 cursor-pointer mt-[15px];
+}
+.sidebarSocial {
+  @apply w-[250px] flex items-center justify-center mt-[15px];
+}
+.sidebarIcon {
+  @apply text-base ml-2.5;
+}
