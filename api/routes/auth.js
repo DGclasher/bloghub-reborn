@@ -3,7 +3,7 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-// Register
+// REGISTER
 router.post("/register", async (req, res) => {
   try {
     const salt = await bcrypt.genSalt(10);
@@ -23,12 +23,12 @@ router.post("/register", async (req, res) => {
   }
 });
 
-// Login
+// LOGIN
 router.post("/login", async (req, res) => {
   try {
     const user = await User.findOne({ username: req.body.username });
     if (!user) {
-      res.status(400).json("Wrong credentials!");
+      res.status(400).json("wrong credentials");
       return;
     }
     const validated = await bcrypt.compare(req.body.password, user.password);
@@ -41,12 +41,13 @@ router.post("/login", async (req, res) => {
         (err, token) => {
           if (err) throw err;
           res
+            .status(200)
             .cookie("token", token)
             .json({ message: "logged in", token: token });
         }
       );
     } else {
-      res.status(400).json("Wrong credentials");
+      res.status(400).json({ message: "wrong credentials" });
     }
   } catch (error) {
     console.log(error);

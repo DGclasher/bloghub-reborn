@@ -17,7 +17,7 @@ router.post("/", async (req, res) => {
   const newPost = new Post(req.body);
   try {
     const savePost = await newPost.save();
-    res.status(200).json({ message: "Post created" });
+    res.status(200).json({ message: "Post created", details: newPost });
   } catch (error) {
     res.status(500).json(error);
   }
@@ -34,6 +34,7 @@ router.put("/:id", async (req, res) => {
     }
     req.body.username = decoded.username;
   });
+
   try {
     const post = await Post.findById(req.params.id);
     if (req.body.username === post.username) {
@@ -45,6 +46,7 @@ router.put("/:id", async (req, res) => {
           },
           { new: true }
         );
+        res.status(200).json({ message: "Post updated", details: updatedPost });
       } catch (error) {}
     } else {
       res.status(401).json({ message: "Unauthorized" });
@@ -59,33 +61,51 @@ router.delete("/:id", async (req, res) => {
   const { token } = req.cookies;
 
   jwt.verify(token, process.env.JWT_SECRET, {}, (err, decoded) => {
-    if (err || decoded.id != req.params.id) {
+    if (err) {
       res.status(401).json({ message: "Unauthorized" });
       return;
     }
+    req.body.username = decoded.username;
   });
+
   try {
-    const user = await User.findById(req.params.id);
-    try {
-      await Post.deleteMany({ username: user.username });
-      await User.findByIdAndDelete(req.params.id);
-      res.status(200).json({ message: `Deleted user` });
-    } catch (error) {
-      res.status(500).json(error);
-    }
+    await Post.findByIdAndDelete(req.params.id);
+    res.status(200).json({ message: "Post deleted" });
   } catch (error) {
-    res.status(404).json("User not found");
+    res.status(500).json({ message: "Internal server error" });
   }
 });
 
 // GET POST
 router.get("/:id", async (req, res) => {
   try {
-    const user = await User.findById(req.params.id);
-    const { password, ...others } = user._doc;
-    res.status(200).json(others);
+    const post = await Post.findById(req.params.id);
+    res.status(200).json(post);
   } catch (error) {
     res.status(500).json(error);
+  }
+});
+
+// GET ALL POSTS
+router.get("/", async (req, res) => {
+  const username = req.query.user;
+  const catName = req.query.cat;
+  try {
+    let posts;
+    if (username) {
+      posts = await Post.find({ username });
+    } else if (catName) {
+      posts = await Post.find({
+        categories: {
+          $in: [catName],
+        },
+      });
+    } else {
+      posts = await Post.find();
+    }
+    res.status(200).json(posts);
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error" });
   }
 });
 
