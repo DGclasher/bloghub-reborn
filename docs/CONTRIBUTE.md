@@ -27,11 +27,7 @@
   cd server
   ```
   ```
-  nodemon index.js
-  ```
-  If it errors out, type
-  ```
-  npm i nodemon -g
+  npm test
   ```
 
 + Run the Client

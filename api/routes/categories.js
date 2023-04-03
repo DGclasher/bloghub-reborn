@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const Category = require("../models/Category");
 const jwt = require("jsonwebtoken");
-const { route } = require("./users");
 
 // GET CATEGORY
 router.get("/", async (req, res) => {
