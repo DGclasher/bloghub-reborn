@@ -5,6 +5,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import { useEffect, useState } from "react";
 import "./homepage.css";
 import axios from 'axios'
+const BASE_URL="https://bloghub-reborn.onrender.com/api"
 
 export default function Homepage() {
   const [posts, setPosts] = useState([]);
@@ -12,7 +13,7 @@ export default function Homepage() {
 
   useEffect(() => {
     const fetchPost = async ()=> {
-        const response = await axios.get("/posts"+search)
+        const response = await axios.get(BASE_URL+"/posts"+search)
         setPosts(response.data)
     }
     fetchPost()

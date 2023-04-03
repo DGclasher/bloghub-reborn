@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import "./singlePost.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+const BASE_URL="https://bloghub-reborn.onrender.com/api"
 
 export default function SinglePost() {
   const location = useLocation()
@@ -9,7 +10,7 @@ export default function SinglePost() {
   const [post, setPost] = useState([])
 
   useEffect(async ()=>{
-    const response = await axios.get(`/posts/${id}`)
+    const response = await axios.get(`${BASE_URL}/posts/${id}`)
     setPost(response.data)
   },[])
 
