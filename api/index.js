@@ -4,6 +4,8 @@ const multer = require("multer");
 const express = require("express");
 const { default: mongoose } = require("mongoose");
 const cookieParser = require("cookie-parser");
+const cors = require('cors')
+const corsOption = require("./config/corsOption")
 const PORT = process.env.PORT || 5000;
 
 const app = express();
@@ -17,6 +19,8 @@ mongoose
   })
   .then(console.log(`Connected to MongoDB`))
   .catch((err) => console.log(err));
+
+app.use(cors(corsOption))
 
 // IMAGE UPLOAD
 const storage = multer.diskStorage({
