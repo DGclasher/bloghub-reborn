@@ -1,5 +1,5 @@
 const whiteList = [
-    "https://bloghub-reborn.netlify.app",
+    "https://bloghub-reborn.netlify.app/",
   ];
   const corsOption = {
     origin: (origin, callback) => {
