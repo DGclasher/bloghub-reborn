@@ -4,7 +4,7 @@ const corsMiddleware = (req, res, next) => {
     res.setHeader("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
     res.setHeader('Access-Control-Allow-Credentials', true);
     // Set custom headers for CORS
-    res.setHeader("Access-Control-Allow-Headers", "Content-type,Accept,X-Custom-Header,Cookies");
+    res.setHeader("Access-Control-Allow-Headers", "Content-type,Accept,X-Custom-Header,Cookie");
 
     if (req.method === "OPTIONS") {
         return res.status(200).end();
