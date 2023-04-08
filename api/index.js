@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const corsOption = require("./config/corsOption");
 const { default: mongoose } = require("mongoose");
+const corsMiddleware = require("./middleware/corsMiddleware");
 
 const PORT = process.env.PORT || 5000;
 
@@ -14,10 +15,11 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(cors(corsOption));
-app.options('/*', (_, res) => {
-  res.sendStatus(200);
-});
+// app.use(cors(corsOption));
+// app.options('/*', (_, res) => {
+//   res.sendStatus(200);
+// });
+app.use(corsMiddleware)
 
 mongoose
   .connect(process.env.MONGO_URL, {
