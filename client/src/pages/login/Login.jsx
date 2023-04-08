@@ -14,18 +14,10 @@ export default function Login() {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
-      const res = await axios.post(
-        "/auth/login",
-        {
-          username: userRef.current.value,
-          password: passwordRef.current.value,
-        },
-        {
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-          },
-        }
-      );
+      const res = await axios.post("/auth/login", {
+        username: userRef.current.value,
+        password: passwordRef.current.value,
+      });
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
       window.location.replace("/");
     } catch (error) {

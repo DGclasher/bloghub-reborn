@@ -13,19 +13,11 @@ export default function Register() {
     e.preventDefault();
     setError(false);
     try {
-      const res = await axios.post(
-        "/auth/register",
-        {
-          username,
-          email,
-          password,
-        },
-        {
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-          },
-        }
-      );
+      const res = await axios.post("/auth/register", {
+        username,
+        email,
+        password,
+      });
       res.data && window.location.replace("/login");
     } catch (error) {
       setError(true);

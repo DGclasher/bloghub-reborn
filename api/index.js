@@ -15,6 +15,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors(corsOption));
+app.options('/*', (_, res) => {
+  res.sendStatus(200);
+});
 
 mongoose
   .connect(process.env.MONGO_URL, {
