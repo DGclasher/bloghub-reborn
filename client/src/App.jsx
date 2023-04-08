@@ -14,6 +14,7 @@ import Header from "./components/header/Header";
 function App() {
   axios.defaults.withCredentials = true;
   axios.defaults.baseURL = "http://localhost:5000/api";
+  axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"
   const {user} = useContext(Context);
   return (
     <Router>
