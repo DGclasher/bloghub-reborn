@@ -12,8 +12,9 @@ import { Context } from "./context/Context";
 import Header from "./components/header/Header";
 
 function App() {
+  axios.defaults.withCredentials = true;
   axios.defaults.baseURL = "https://boghub-reborn.onrender.com/api";
-  axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"
+  // axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"
   const {user} = useContext(Context);
   return (
     <Router>
