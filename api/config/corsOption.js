@@ -1,15 +1,8 @@
-const whiteList = ["http://localhost:3000", "http://127.0.0.1:3000"];
-
 const corsOption = {
-  origin: (origin, callback) => {
-    if (whiteList.indexOf(origin) != -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  optionSuccessStatus: 200,
-  credentials: true
+  origin: ["https://bloghub-reborn.netlify.app", "http://localhost:3000"],
+  credentials: true,
+  methods: "GET,POST,PUT,DELETE,OPTIONS,PUT",
+  allowerHeaders: ["Content-Type", "Cookie"],
 };
 
 module.exports = corsOption;
