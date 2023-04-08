@@ -11,15 +11,11 @@ const corsMiddleware = require("./middleware/corsMiddleware");
 const PORT = process.env.PORT || 5000;
 
 const app = express();
+app.use(cors(corsOption));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
-// app.use(cors(corsOption));
-// app.options('/*', (_, res) => {
-//   res.sendStatus(200);
-// });
-app.use(corsMiddleware)
 
 mongoose
   .connect(process.env.MONGO_URL, {
@@ -51,6 +47,7 @@ app.use("/api/users", require("./routes/users"));
 app.use("/api/posts", require("./routes/posts"));
 app.use("/api/categories", require("./routes/categories"));
 
+app.options("*", cors(corsOption));
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
