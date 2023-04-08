@@ -1,3 +1,4 @@
+import axios from "axios";
 import Topbar from "./components/topbar/Topbar";
 import Homepage from "./pages/homepage/Homepage";
 import Login from "./pages/login/Login";
@@ -6,12 +7,18 @@ import Settings from "./pages/settings/Settings";
 import Single from "./pages/single/Single";
 import Write from "./pages/write/Write";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { useContext } from "react";
+import { Context } from "./context/Context";
+import Header from "./components/header/Header";
 
 function App() {
-  const currentUser = true;
+  axios.defaults.withCredentials = true;
+  axios.defaults.baseURL = "https://boghub-reborn.onrender.com/api";
+  const {user} = useContext(Context);
   return (
     <Router>
       <Topbar />
+      <Header />
       <Switch>
         <Route exact path="/">
           <Homepage />
@@ -20,15 +27,17 @@ function App() {
           <Homepage />
         </Route>
         <Route path="/register">
-          {currentUser ? <Homepage /> : <Register />}
+           <Register />
         </Route>
-        <Route path="/login">{currentUser ? <Homepage /> : <Login />}</Route>
+        <Route path="/login">
+          <Login />
+        </Route>
         <Route path="/post/:id">
           <Single />
         </Route>
-        <Route path="/write">{currentUser ? <Write /> : <Login />}</Route>
+        <Route path="/write">{user ? <Write /> : <Login />}</Route>
         <Route path="/settings">
-          {currentUser ? <Settings /> : <Login />}
+          {user ? <Settings /> : <Login />}
         </Route>
       </Switch>
     </Router>

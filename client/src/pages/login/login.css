@@ -1,11 +1,4 @@
-.login {
-  @apply h-[calc(100vh_-_50px)] flex flex-col items-center justify-center bg-cover;
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.5)
-    ),
-    url("https://images.pexels.com/photos/768473/pexels-photo-768473.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500");
-}
+
 .loginTitle {
   @apply text-[50px];
 }

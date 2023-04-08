@@ -1,16 +1,20 @@
-const os = require("os");
 require("dotenv").config();
+const cors = require('cors')
 const multer = require("multer");
 const express = require("express");
-const { default: mongoose } = require("mongoose");
+const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
-const cors = require('cors')
-const corsOption = require("./config/corsOption")
+const corsOption = require('./config/corsOption')
+const { default: mongoose } = require("mongoose");
+
 const PORT = process.env.PORT || 5000;
 
 const app = express();
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(cors(corsOption))
 
 mongoose
   .connect(process.env.MONGO_URL, {
@@ -43,7 +47,6 @@ app.use("/api/users", require("./routes/users"));
 app.use("/api/posts", require("./routes/posts"));
 app.use("/api/categories", require("./routes/categories"));
 
-app.use(cors(corsOption))
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);

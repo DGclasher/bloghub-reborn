@@ -19,7 +19,7 @@ router.post("/register", async (req, res) => {
       .json({ message: `User ${req.body.username} has been created` });
   } catch (error) {
     console.log(error);
-    res.status(500).json(error);
+    res.status(500).json("user exist");
   }
 });
 
@@ -43,7 +43,7 @@ router.post("/login", async (req, res) => {
           res
             .status(200)
             .cookie("token", token)
-            .json({ message: "logged in", token: token });
+            .json({ user: user.username, token: token });
         }
       );
     } else {

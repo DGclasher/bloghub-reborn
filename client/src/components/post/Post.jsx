@@ -3,7 +3,7 @@ import "./post.css";
 
 export default function Post({post}) {
   return (
-    <div className="post">
+    <div className="post bg-zinc-900 rounded-xl p-5">
       {post.photo && (
       <img
         className="postImg"
@@ -13,7 +13,7 @@ export default function Post({post}) {
       )}
 
         <img
-        className="postImg"
+        className="postImg invert h-[200px] md:h-[300px] object-fill"
         src="https://st3.depositphotos.com/23594922/31822/v/450/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg"
         alt=""
       />
