@@ -2,6 +2,7 @@
   @apply w-[385px] flex flex-col mt-0 mb-10 mx-[25px];
 }
 .postImg {
+
   @apply w-[385px] h-[280px] object-cover rounded-[7px];
 }
 .postInfo {

@@ -1,12 +1,7 @@
 .write {
   @apply pt-[50px];
 }
-.writeImg {
-  @apply w-[70vw] h-[250px] object-cover ml-[150px] rounded-[10px];
-}
-.writeForm {
-  @apply relative;
-}
+
 .writeFormGroup {
   @apply flex items-center ml-[150px];
 }
