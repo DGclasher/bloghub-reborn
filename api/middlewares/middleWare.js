@@ -1,4 +1,4 @@
-const middleWare = (req, res, next) => {
+const corsMiddleWare = (req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "https://bloghub-reborn.netlify.app");
   res.setHeader(
     "Access-Control-Allow-Methods",
@@ -11,3 +11,5 @@ const middleWare = (req, res, next) => {
   res.setHeader("Access-Control-Allow-Credentials", true);
   next();
 };
+
+module.exports = corsMiddleWare
