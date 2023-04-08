@@ -1,4 +1,4 @@
-const whiteList = ["https://bloghub-reborn.netlify.app"];
+const whiteList = ["https://bloghub-reborn.netlify.app", "http://localhost:3000"];
 
 const corsOption = {
   origin: (origin, callback) => {
