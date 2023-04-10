@@ -2,6 +2,8 @@ const router = require("express").Router();
 const User = require("../models/User");
 const Post = require("../models/Post");
 const jwt = require("jsonwebtoken");
+const fs = require("fs");
+const path = require("path");
 
 // NEW POST
 router.post("/", async (req, res) => {
@@ -57,7 +59,7 @@ router.put("/:id", async (req, res) => {
 });
 
 // DELETE POST
-router.delete("/:id", async (req, res) => {
+router.delete("/:id/:fileName?", async (req, res) => {
   const { token } = req.cookies;
 
   jwt.verify(token, process.env.JWT_SECRET, {}, (err, decoded) => {
@@ -70,6 +72,9 @@ router.delete("/:id", async (req, res) => {
 
   try {
     await Post.findByIdAndDelete(req.params.id);
+    if (req.params.fileName) {
+      fs.unlinkSync(path.join(__dirname, "..", "images", req.params.fileName));
+    }
     res.status(200).json({ message: "Post deleted" });
   } catch (error) {
     res.status(500).json({ message: "Internal server error" });
