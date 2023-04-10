@@ -1,5 +1,6 @@
 require("dotenv").config();
 const cors = require("cors");
+const path = require("path");
 const multer = require("multer");
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -12,6 +13,7 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 app.use(cors(corsOption));
 app.use(express.json());
+app.use("/images", express.static(path.join(__dirname, "/images")));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -37,7 +39,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 app.post("/api/upload", upload.single("file"), (req, res) => {
-  res.status(200).json({ message: "file has been uploaded" });
+  res.status(200).json({ message: "file has been uploaded", fileName: req.file.filename });
 });
 
 // ROUTES
