@@ -13,8 +13,8 @@ import Header from "./components/header/Header";
 
 function App() {
   axios.defaults.withCredentials = true;
-  axios.defaults.baseURL = "https://boghub-reborn.onrender.com/api";
-  const {user} = useContext(Context);
+  axios.defaults.baseURL = window.location.host + "/api";
+  const { user } = useContext(Context);
   return (
     <Router>
       <Topbar />
@@ -27,7 +27,7 @@ function App() {
           <Homepage />
         </Route>
         <Route path="/register">
-           <Register />
+          <Register />
         </Route>
         <Route path="/login">
           <Login />
@@ -36,9 +36,7 @@ function App() {
           <Single />
         </Route>
         <Route path="/write">{user ? <Write /> : <Login />}</Route>
-        <Route path="/settings">
-          {user ? <Settings /> : <Login />}
-        </Route>
+        <Route path="/settings">{user ? <Settings /> : <Login />}</Route>
       </Switch>
     </Router>
   );

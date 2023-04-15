@@ -7,12 +7,11 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const corsOption = require("./config/corsOption");
 const { default: mongoose } = require("mongoose");
-const corsMiddleware = require("./middleware/corsMiddleware");
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 const app = express();
-app.use(cors(corsOption));
+app.use(cors());
 app.use(express.json());
 app.use("/images", express.static(path.join(__dirname, "/images")));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -40,7 +39,9 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 app.post("/api/upload", upload.single("file"), (req, res) => {
-  res.status(200).json({ message: "file has been uploaded", fileName: req.file.filename });
+  res
+    .status(200)
+    .json({ message: "file has been uploaded", fileName: req.file.filename });
 });
 
 // ROUTES
@@ -49,7 +50,15 @@ app.use("/api/users", require("./routes/users"));
 app.use("/api/posts", require("./routes/posts"));
 app.use("/api/categories", require("./routes/categories"));
 
-app.options("*", cors(corsOption));
+if (process.env.NODE_ENV == "production") {
+  app.get("/", (req, res) => {
+    app.use(express.static(path.resolve(__dirname, "..", "client", "build")));
+    res.sendFile(
+      path.resolve(__dirname, "..", "client", "public", "index.html")
+    );
+  });
+}
+
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });

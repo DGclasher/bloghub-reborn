@@ -1,7 +1,6 @@
 const corsOption = {
-  origin: ["https://bloghub-reborn.netlify.app", "http://localhost:3000"],
-  AccessControlAllowOrigin: '*',
-  methods: "GET,POST,PUT,DELETE,OPTIONS,PUT",
+  origin: ["http://localhost:3000"],
+  credetials: true,
 };
 
 module.exports = corsOption;
