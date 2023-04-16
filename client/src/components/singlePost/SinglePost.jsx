@@ -2,14 +2,13 @@ import { Link, useLocation } from "react-router-dom";
 import "./singlePost.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-const BASE_URL="https://bloghub-reborn.onrender.com/api"
 
 export default function SinglePost() {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   const [post, setPost] = useState([]);
 
-  const PF = "https://bloghub-reborn.onrender.com/images/";
+  const PF = "https://bloghub-reborn.vercel.app/images/";
   useEffect(async () => {
     const response = await axios.get(`/posts/${id}`);
     console.log(response.data);

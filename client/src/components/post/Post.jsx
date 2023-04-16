@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "./post.css";
 
 export default function Post({ post }) {
-  const PF = "https://bloghub-reborn.onrender.com/images/";
+  const PF = "https://bloghub-reborn.vercel.app/images/";
   const printLimit = (content) => {
     let ans = "";
     for (let i = 0; i < 100 && i < content.length; i++) {

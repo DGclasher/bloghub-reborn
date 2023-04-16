@@ -2,14 +2,13 @@ import { Link } from "react-router-dom";
 import "./sidebar.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-const BASE_URL="https://bloghub-reborn.onrender.com/api"
 
 export default function Sidebar() {
   const [cats, setCat] = useState([])
 
   useEffect(() => {
     const fetchCatgs = async() => {
-    const res = await axios.get(`${BASE_URL}/categories`)
+    const res = await axios.get(`/categories`)
     setCat(res.data)
   }
   fetchCatgs()

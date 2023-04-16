@@ -11,12 +11,12 @@ const { default: mongoose } = require("mongoose");
 const PORT = process.env.PORT || 3000;
 
 const app = express();
+
 app.use(cors());
 app.use(express.json());
-app.use("/images", express.static(path.join(__dirname, "/images")));
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use("/images", express.static(path.join(__dirname, "/images")));
 
 mongoose
   .connect(process.env.MONGO_URL, {
@@ -51,10 +51,10 @@ app.use("/api/posts", require("./routes/posts"));
 app.use("/api/categories", require("./routes/categories"));
 
 if (process.env.NODE_ENV == "production") {
+  app.use(express.static(path.join(__dirname, "client", "build")));
   app.get("/", (req, res) => {
-    app.use(express.static(path.resolve(__dirname, "..", "client", "build")));
     res.sendFile(
-      path.resolve(__dirname, "..", "client", "public", "index.html")
+      path.resolve(__dirname, "client", "public", "index.html")
     );
   });
 }
