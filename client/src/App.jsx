@@ -13,7 +13,7 @@ import Header from "./components/header/Header";
 
 function App() {
   axios.defaults.withCredentials = true;
-  axios.defaults.baseURL = "https://bloghub-reborn.vercel.app/api";
+  axios.defaults.baseURL = "http://localhost:5000/api";
   const { user } = useContext(Context);
   return (
     <Router>

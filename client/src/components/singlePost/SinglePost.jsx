@@ -8,7 +8,7 @@ export default function SinglePost() {
   const id = location.pathname.split("/")[2];
   const [post, setPost] = useState([]);
 
-  const PF = "https://bloghub-reborn.vercel.app/images/";
+  const PF = "http://localhost:5000/images/";
   useEffect(async () => {
     const response = await axios.get(`/posts/${id}`);
     console.log(response.data);
